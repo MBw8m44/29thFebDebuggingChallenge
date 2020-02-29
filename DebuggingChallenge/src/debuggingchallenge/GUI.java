@@ -2,7 +2,7 @@ package debuggingchallenge;
 public class GUI extends javax.swing.JFrame {
 
     //Class variables
-    private String opperand1;
+    private double opperand1;
     private double opperand2;
     private String opperation;
     private boolean op1Set = false;
@@ -65,15 +65,15 @@ public class GUI extends javax.swing.JFrame {
     
     private String doSum(){
         //Get a result variable
-        int result = 0;
+        double result = 0;
         
         //Do the sums 
         if(opperation.equals("*")){
-            result = opperand1 + opperand2;
-        } else if(opperation.equals("+")){
-            result = opperand1 / opperand2;
-        } else if(opperation.equals("/")){
             result = opperand1 * opperand2;
+        } else if(opperation.equals("+")){
+            result = opperand1 + opperand2;
+        } else if(opperation.equals("/")){
+            result = opperand1 / opperand2;
         } else if(opperation.equals("-")){
             result = opperand1 - opperand2;
         } 
@@ -81,8 +81,13 @@ public class GUI extends javax.swing.JFrame {
         else { 
             return "Error: Not a sum";
         }
+        String result_as_string = Double.toString(result);
+        if(Math.ceil(result) == Math.floor(result)){
+            String[] strgarry = result_as_string.split(".0");
+            return strgarry[0];
+        }
         //Return the double as a string
-        return Double.toString(result);
+        return result_as_string;
     }
     
     private void reset(){
@@ -410,7 +415,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_input8ButtonActionPerformed
 
     private void input9ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input9ButtonActionPerformed
-        addSumPart("1");
+        addSumPart("9");
     }//GEN-LAST:event_input9ButtonActionPerformed
 
     private void input4ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input4ButtonActionPerformed
@@ -426,7 +431,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_input6ButtonActionPerformed
 
     private void input1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input1ButtonActionPerformed
-        addSumPart("9");
+        addSumPart("1");
     }//GEN-LAST:event_input1ButtonActionPerformed
 
     private void input2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input2ButtonActionPerformed
